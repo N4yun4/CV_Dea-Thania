@@ -42,11 +42,6 @@
   const links = [...document.querySelectorAll('.site-nav ul a[href^="#"]')];
   const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
 
-  // case-study chips follow the same "current" logic within the case section
-  const chipNav = document.querySelector(".case-index");
-  const chips = [...document.querySelectorAll('.case-index a[href^="#"]')];
-  const blocks = chips.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
-
   // floating action bar (mobile): visible after the hero, hidden at contact
   const bar = document.querySelector(".action-bar");
   const hero = document.querySelector(".hero");
@@ -61,7 +56,6 @@
   };
 
   let ticking = false;
-  let lastChip = null;
   const updateActive = () => {
     ticking = false;
 
@@ -71,14 +65,6 @@
       a.classList.toggle("active", on);
       if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
     });
-
-    const block = currentOf(blocks);
-    chips.forEach((a) => a.classList.toggle("active", block !== null && a.getAttribute("href") === "#" + block.id));
-    const activeChip = chips.find((a) => a.classList.contains("active"));
-    if (activeChip && activeChip !== lastChip && chipNav.scrollWidth > chipNav.clientWidth) {
-      chipNav.scrollTo({ left: activeChip.offsetLeft - 16, behavior: reduceMotion ? "auto" : "smooth" });
-    }
-    lastChip = activeChip || null;
 
     if (bar) {
       const pastHero = hero.getBoundingClientRect().bottom < 80;
@@ -113,27 +99,6 @@
       if (i > 0) el.style.transitionDelay = Math.min(i * 60, 300) + "ms";
       io.observe(el);
     });
-  }
-
-  /* ---------- swipe galleries: focusable only when they actually scroll ---------- */
-  const syncRail = (rail) => {
-    const scrolls = rail.scrollWidth > rail.clientWidth + 1;
-    if (scrolls) {
-      rail.tabIndex = 0;
-      rail.setAttribute("role", "region");
-      rail.setAttribute("aria-label", rail.dataset.label + ", geser untuk melihat yang lain");
-    } else {
-      rail.removeAttribute("tabindex");
-      rail.removeAttribute("role");
-      rail.removeAttribute("aria-label");
-    }
-  };
-  const rails = document.querySelectorAll(".rail");
-  if ("ResizeObserver" in window) {
-    const ro = new ResizeObserver((entries) => entries.forEach((e) => syncRail(e.target)));
-    rails.forEach((r) => ro.observe(r));
-  } else {
-    rails.forEach(syncRail);
   }
 
   /* ---------- lightbox ---------- */

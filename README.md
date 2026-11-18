@@ -7,7 +7,7 @@ Web portofolio satu halaman untuk Dea Thania, Social Media & Visual Content Desi
 ## Isi
 
 - Hero + unduh CV (PDF)
-- Studi kasus: Content Plan Instagram Sutarman Dental Care (identitas visual, feed, story, reels, poster)
+- Karya: 4 cuplikan desain Instagram Sutarman Dental Care + PDF portofolio lengkap
 - Pengalaman & pelatihan, pendidikan, keahlian, bahasa, kontak
 
 ## Struktur
@@ -19,6 +19,7 @@ assets/
   js/main.js
   img/            # karya (WebP), foto, og.jpg, favicon
   CV-Dea-Thania.pdf
+  Portofolio-Dea-Thania.pdf
 ```
 
 HTML/CSS/JS statis tanpa build step. Font dari Google Fonts (Fraunces + Archivo).
@@ -37,5 +38,6 @@ Settings → Pages → Source: **Deploy from a branch** → Branch: `main` / `(r
 ## Mengganti konten
 
 - Teks: langsung di `index.html`.
-- Karya baru: simpan gambar WebP di `assets/img/`, lalu salin satu blok `<article class="cs-block">` di bagian studi kasus.
+- Cuplikan karya: simpan gambar WebP di `assets/img/`, lalu salin satu `<li>` di dalam `<ul class="works">`.
+- PDF portofolio: ganti `assets/Portofolio-Dea-Thania.pdf` dengan nama file yang sama, lalu sesuaikan jumlah halaman dan ukurannya di kartu PDF.
 - CV: ganti `assets/CV-Dea-Thania.pdf` dengan nama file yang sama.
