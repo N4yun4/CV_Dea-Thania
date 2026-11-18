@@ -1,0 +1,6 @@
+# local tooling
+.playwright-mcp/
+
+# source files (kept local)
+/CV_Dea_Thania__.pdf
+/Portofolio Social Media Design.pptx.pdf
