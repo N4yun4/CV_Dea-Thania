@@ -7,7 +7,7 @@ Web portofolio satu halaman untuk Dea Thania, Social Media & Visual Content Desi
 ## Isi
 
 - Hero + unduh CV (PDF)
-- Karya: 4 cuplikan desain Instagram Sutarman Dental Care + PDF portofolio lengkap
+- Karya: 4 cuplikan desain Instagram Sutarman Dental Care + PDF portofolio lengkap + link folder Google Drive untuk karya terbaru
 - Pengalaman & pelatihan, pendidikan, keahlian, bahasa, kontak
 
 ## Struktur
@@ -41,3 +41,4 @@ Settings → Pages → Source: **Deploy from a branch** → Branch: `main` / `(r
 - Cuplikan karya: simpan gambar WebP di `assets/img/`, lalu salin satu `<li>` di dalam `<ul class="works">`.
 - PDF portofolio: ganti `assets/Portofolio-Dea-Thania.pdf` dengan nama file yang sama, lalu sesuaikan jumlah halaman dan ukurannya di kartu PDF.
 - CV: ganti `assets/CV-Dea-Thania.pdf` dengan nama file yang sama.
+- Karya baru: cukup upload ke folder Google Drive "Portofolio Dea Thania"; tombol "Buka Google Drive" di web selalu menuju folder itu, jadi web tidak perlu diubah.

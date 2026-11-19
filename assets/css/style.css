@@ -297,6 +297,8 @@ em { font-style: italic; }
 .pdf-info h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.25rem, 2.2vw, 1.5rem); letter-spacing: -.01em; }
 .pdf-info p { margin-top: 4px; color: var(--ink-3); font-size: .93rem; }
 .pdf-actions { display: flex; gap: 10px; }
+.drive-card { margin-top: 12px; }
+.drive-card .pdf-icon { background: var(--blue-soft); color: #2F5FB8; }
 
 /* ---------- timeline ---------- */
 .timeline { margin-top: clamp(36px, 6vw, 64px); position: relative; }
@@ -462,6 +464,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
   .pdf-card { grid-template-columns: auto 1fr; padding: 20px; gap: 18px 16px; }
   .pdf-icon { width: 52px; height: 52px; }
   .pdf-actions { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .drive-card .pdf-actions { grid-template-columns: minmax(0, 1fr); }
   .pdf-actions .btn { padding-inline: 14px; }
 
   /* timeline as cards */
