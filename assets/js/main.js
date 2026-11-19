@@ -42,10 +42,13 @@
   const links = [...document.querySelectorAll('.site-nav ul a[href^="#"]')];
   const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
 
-  // floating action bar (mobile): visible after the hero, hidden at contact
+  // floating action bar (mobile): visible after the hero, hidden at contact,
+  // and hidden whenever a link/button on the page scrolls underneath it so the bar never steals a tap
   const bar = document.querySelector(".action-bar");
   const hero = document.querySelector(".hero");
   const contact = document.getElementById("kontak");
+  const tappables = [...document.querySelectorAll("main a[href], main button")];
+  const BAR_ZONE = 110; // bar height + bottom offset + safety margin, in px from the viewport bottom
 
   // the last section whose top has passed 40% of the viewport is "current"
   const currentOf = (list) => {
@@ -69,7 +72,12 @@
     if (bar) {
       const pastHero = hero.getBoundingClientRect().bottom < 80;
       const atContact = contact.getBoundingClientRect().top < window.innerHeight * 0.85;
-      const show = pastHero && !atContact;
+      const zoneTop = window.innerHeight - BAR_ZONE;
+      const covering = pastHero && tappables.some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.width > 0 && r.bottom > zoneTop && r.top < window.innerHeight;
+      });
+      const show = pastHero && !atContact && !covering;
       bar.classList.toggle("show", show);
       bar.inert = !show || nav.classList.contains("open");
     }
